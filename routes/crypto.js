@@ -6,8 +6,14 @@ const cryptoRecord = require('../models/cryptoRecord')
 
 router.get('/fetchalldata', async(req,res)=>{
 
+  try {
     const data = await cryptoRecord.find();
     res.json(data);
+  } catch (error) {
+    res.status(500).send("Internal Server Error")
+    
+  }
+   
 })
 
 //api for save crypto
